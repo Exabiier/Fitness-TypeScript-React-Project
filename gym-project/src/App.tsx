@@ -1,11 +1,21 @@
+import { useState } from "react"
 import Navbar from "./scenes/navbar"
+import { SelectedPage } from "@/shared/types"
+useState
+
+
 
 function App() {
 
+    const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home)
 
   return (
     <div className="app bg-gray-20 ">
-      <Navbar />
+      <Navbar
+        selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+      />
+
     </div>
   )
 }

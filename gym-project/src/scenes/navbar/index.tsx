@@ -1,12 +1,21 @@
 import React from 'react'
 import { useState } from "react"
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid"
+import { Bars3Icon, LinkIcon, XMarkIcon } from "@heroicons/react/24/solid"
 import Logo from "@/assets/Logo.png";
+import Link from "../navbar/Link"
+import { SelectedPage } from '@/shared/types';
+import useMediaQuery from '@/hooks/useMediaQuery';
 
-type Props = {}
+type Props = {
+    selectedPage: SelectedPage;
+    setSelectedPage: (value: SelectedPage) => void;
+}
 
-const Navbar = (props: Props) => {
+const Navbar = ({selectedPage, setSelectedPage}: Props) => {
     const flexBetween = "flex items-center justify-between";
+    
+    // this allows us to use bolleans for css queries
+    const isAboveMediumScreens = useMediaQuery("min-width: 1060px");
 
 
   return (
@@ -24,10 +33,23 @@ const Navbar = (props: Props) => {
                 <div className={`${flexBetween} w-full `}>
                     {/* links for nav bar */}
                     <div className={`${flexBetween} gap-8 text-sm`}>
-                        <p>Home</p>
-                        <p>Benefits</p>
-                        <p>Our Classes</p>
-                        <p>Contact Us</p>
+                        <Link 
+                        page="Home" 
+                        selectedPage={selectedPage}
+                        setSelectedPage={setSelectedPage}
+                        />
+                        <Link page="benefits"
+                        selectedPage={selectedPage}
+                        setSelectedPage={setSelectedPage}
+                        />
+                        <Link page="Our Classes"
+                        selectedPage={selectedPage}
+                        setSelectedPage={setSelectedPage}
+                        />
+                        <Link page="Contact Us"
+                        selectedPage={selectedPage}
+                        setSelectedPage={setSelectedPage}
+                         />
                     </div>
                     {/* This is the sign up page */}
                     <div className={`${flexBetween} gap-8`}  >
