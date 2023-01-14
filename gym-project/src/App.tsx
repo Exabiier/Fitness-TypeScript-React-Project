@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import Home from "@/scenes/home"
 import Navbar from "./scenes/navbar"
 import { SelectedPage } from "@/shared/types"
 useState
@@ -21,6 +22,7 @@ function App() {
         }
       }
 
+      //  We need to take off the event Listener so then our website can still fucntion all the way. 
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll)
 
@@ -31,6 +33,9 @@ function App() {
       <Navbar
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+      />
+      <Home 
         setSelectedPage={setSelectedPage}
       />
 
